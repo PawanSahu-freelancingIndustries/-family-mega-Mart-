@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>New Family Mega-Mart | Premium Fashion & Apparel</title>
+<meta name="description" content="Discover premium readymade apparel, daily wear, and fashion accessories at New Family Mega-Mart. Serving families for over 3 years with exceptional service." />
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          burgundy: '#6b1d2b', // Deep premium maroon/burgundy
+          gold: '#cda34f',     // Elegant gold
+          cream: '#fcf9f2',    // Soft ivory background
+          lightgold: '#e8d5b5'
+        },
+        fontFamily: {
+          serif: ['"Playfair Display"', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  /* Base & Typography */
+  body { font-family: 'Inter', sans-serif; background-color: #fcf9f2; color: #333; overflow-x: hidden; }
+  h1, h2, h3, h4, h5, .font-serif { font-family: 'Playfair Display', serif; }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #f1f1f1; }
+  ::-webkit-scrollbar-thumb { background: #cda34f; border-radius: 3px; }
+
+  /* Animations */
+  .fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; transform: translateY(20px); }
+  @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+
+  /* Hide Scrollbar */
+  .hide-scroll::-webkit-scrollbar { display: none; }
+  .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Arch Shape for Categories (Premium Look) */
+  .arch-card { border-radius: 120px 120px 12px 12px; overflow: hidden; position: relative; }
+  
+  /* Overlays & Drawers */
+  .overlay { transition: opacity 0.3s ease; }
+  .drawer { transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  
+  /* Image Hover Effects */
+  .img-zoom { transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .group:hover .img-zoom { transform: scale(1.05); }
+
+  /* Announcement Marquee */
+  .marquee { display: flex; overflow: hidden; white-space: nowrap; }
+  .marquee-content { display: flex; animation: marquee 25s linear infinite; }
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ================= ANNOUNCEMENT BAR ================= -->
+<div class="bg-burgundy text-gold text-[11px] md:text-xs py-2 marquee relative z-50 uppercase tracking-widest font-medium">
+  <div class="marquee-content">
+    <span class="mx-4 text-white">Proudly serving the community for 3+ years</span>
+    <span class="mx-4">✦</span>
+    <span class="mx-4">Open Daily: 9:00 AM - 9:00 PM</span>
+    <span class="mx-4">✦</span>
+    <span class="mx-4 text-white">Premium Readymade Apparel & Accessories</span>
+    <span class="mx-4">✦</span>
+    <span class="mx-4">Proudly serving the community for 3+ years</span>
+    <span class="mx-4">✦</span>
+    <span class="mx-4">Open Daily: 9:00 AM - 9:00 PM</span>
+  </div>
+</div>
+
+<!-- ================= HEADER ================= -->
+<header class="sticky top-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 z-40 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between relative">
+    
+    <!-- Mobile Menu Button -->
+    <div class="flex items-center space-x-4 md:w-1/3">
+      <button onclick="toggleMobileMenu()" class="md:hidden text-gray-800 hover:text-gold transition">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+      <button onclick="scrollToSection('products-section')" class="hidden md:block text-gray-600 hover:text-gold transition">
+        <i data-lucide="search" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Logo -->
+    <div class="w-1/2 md:w-1/3 flex justify-start md:justify-center absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
+      <a href="#" class="flex flex-col items-center text-center">
+        <span class="text-xl md:text-3xl font-serif font-bold text-burgundy tracking-wide leading-tight">New Family</span>
+        <span class="text-[10px] md:text-xs font-sans font-semibold uppercase tracking-[0.3em] text-gold mt-0.5">Mega-Mart</span>
+      </a>
+    </div>
+
+    <!-- Icons -->
+    <div class="flex items-center justify-end space-x-4 md:space-x-6 md:w-1/3">
+      <a href="#contact" class="hidden md:flex items-center text-sm font-medium text-gray-600 hover:text-gold transition">
+        <i data-lucide="map-pin" class="w-4 h-4 mr-1"></i> Store Info
+      </a>
+      <button onclick="toggleCartDrawer()" class="relative text-gray-800 hover:text-gold transition">
+        <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+        <span id="cart-badge" class="absolute -top-2 -right-2 bg-gold text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center hidden">0</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Desktop Navigation -->
+  <div class="hidden md:flex justify-center space-x-10 py-4 border-t border-gray-50 text-xs font-semibold text-gray-700 uppercase tracking-widest">
+    <a href="#new-arrivals" class="hover:text-gold transition border-b-2 border-transparent hover:border-gold pb-1">New Arrivals</a>
+    <a href="#readymade" class="hover:text-gold transition border-b-2 border-transparent hover:border-gold pb-1">Readymade Apparel</a>
+    <a href="#daily-wear" class="hover:text-gold transition border-b-2 border-transparent hover:border-gold pb-1">Daily Wear</a>
+    <a href="#accessories" class="hover:text-gold transition border-b-2 border-transparent hover:border-gold pb-1">Accessories</a>
+    <a href="#deals" class="hover:text-burgundy transition border-b-2 border-transparent hover:border-burgundy pb-1 font-bold">Special Deals</a>
+  </div>
+</header>
+
+<!-- ================= MOBILE MENU DRAWER ================= -->
+<div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-[50] opacity-0 pointer-events-none overlay" onclick="toggleMobileMenu()"></div>
+<div id="mobile-menu" class="fixed top-0 left-0 w-[85%] max-w-sm h-full bg-white z-[60] shadow-2xl transform -translate-x-full drawer flex flex-col">
+  <div class="flex items-center justify-between p-5 border-b border-gray-100 bg-cream">
+    <span class="font-serif text-xl font-bold text-burgundy">Menu</span>
+    <button onclick="toggleMobileMenu()" class="text-gray-500 hover:text-burgundy"><i data-lucide="x" class="w-6 h-6"></i></button>
+  </div>
+  <div class="flex-1 overflow-y-auto py-4">
+    <nav class="flex flex-col text-sm font-medium text-gray-700">
+      <a href="#new-arrivals" class="px-6 py-4 border-b border-gray-50 hover:bg-cream hover:text-burgundy transition" onclick="toggleMobileMenu()">New Arrivals</a>
+      <a href="#readymade" class="px-6 py-4 border-b border-gray-50 hover:bg-cream hover:text-burgundy transition" onclick="toggleMobileMenu()">Readymade Apparel</a>
+      <a href="#daily-wear" class="px-6 py-4 border-b border-gray-50 hover:bg-cream hover:text-burgundy transition" onclick="toggleMobileMenu()">Daily Wear</a>
+      <a href="#accessories" class="px-6 py-4 border-b border-gray-50 hover:bg-cream hover:text-burgundy transition" onclick="toggleMobileMenu()">Fashion Accessories</a>
+      <a href="#deals" class="px-6 py-4 border-b border-gray-50 hover:bg-cream text-burgundy font-bold transition" onclick="toggleMobileMenu()">Special Deals</a>
+    </nav>
+    
+    <div class="px-6 py-6 mt-4 bg-cream/50 border-y border-gray-100">
+      <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-2 font-bold">Store Hours</p>
+      <p class="text-sm font-semibold text-burgundy flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-gold"></i> 9:00 AM - 9:00 PM</p>
+      <p class="text-xs text-gray-500 mt-2 leading-relaxed">Open all 7 days a week for your family's needs.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HERO SECTION ================= -->
+<section class="relative bg-cream overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid md:grid-cols-2 gap-8 items-center min-h-[500px] md:min-h-[600px]">
+    
+    <!-- Text Content -->
+    <div class="z-10 py-12 md:py-0 text-center md:text-left fade-in-up">
+      <div class="inline-flex items-center gap-2 bg-burgundy/5 text-burgundy px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-widest mb-6 border border-burgundy/10">
+        <i data-lucide="award" class="w-3.5 h-3.5 text-gold"></i> 3+ Years of Excellence
+      </div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-burgundy leading-tight mb-4">
+        Timeless Styles, <br>
+        <span class="italic text-gold">Family Prices.</span>
+      </h1>
+      <p class="text-gray-600 mb-8 max-w-md mx-auto md:mx-0 text-sm md:text-base leading-relaxed">
+        Discover a premium range of readymade apparel, comfortable daily wear, and trendy accessories tailored for the whole family.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+        <a href="#products-section" class="w-full sm:w-auto bg-burgundy text-white text-xs font-semibold px-8 py-4 rounded-sm hover:bg-gold transition duration-300 uppercase tracking-widest shadow-lg shadow-burgundy/20 text-center">Shop Collection</a>
+        <a href="#contact" class="w-full sm:w-auto bg-transparent border border-burgundy/30 text-burgundy text-xs font-semibold px-8 py-4 rounded-sm hover:border-burgundy hover:bg-burgundy hover:text-white transition duration-300 uppercase tracking-widest text-center flex items-center justify-center gap-2">
+          <i data-lucide="map-pin" class="w-4 h-4"></i> Visit Store
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="hidden md:block relative h-[500px] lg:h-[600px] fade-in-up delay-200">
+      <!-- Gold frame offset -->
+      <div class="absolute inset-0 border border-gold/40 rounded-tl-[100px] rounded-br-[100px] transform translate-x-4 translate-y-4"></div>
+      <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80" alt="Premium Apparel" class="relative z-10 w-full h-full object-cover rounded-tl-[100px] rounded-br-[100px] shadow-xl" />
+      
+      <!-- Floating Badge -->
+      <div class="absolute bottom-10 -left-6 z-20 bg-white p-4 rounded-sm shadow-xl flex items-center gap-4 border border-gray-100 border-l-4 border-l-gold">
+        <div class="text-gold"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
+        <div>
+          <p class="text-xs font-bold text-gray-800 uppercase tracking-wide">Reasonable Pricing</p>
+          <p class="text-[10px] text-gray-500 mt-0.5">Trusted by locals</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SHOP BY PRICE ================= -->
+<section class="py-12 bg-white border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-center font-serif text-2xl md:text-3xl text-burgundy mb-8 uppercase tracking-widest">Shop By Price</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+      <a href="#products-section" class="border border-gold/50 bg-cream hover:bg-gold/10 p-4 text-center transition group">
+        <span class="block text-burgundy font-serif text-xl md:text-2xl mb-1 group-hover:scale-105 transition">FLAT ₹599</span>
+        <span class="block text-[10px] text-gray-500 uppercase tracking-wider">Under ₹600</span>
+      </a>
+      <a href="#products-section" class="border border-gold/50 bg-cream hover:bg-gold/10 p-4 text-center transition group">
+        <span class="block text-burgundy font-serif text-xl md:text-2xl mb-1 group-hover:scale-105 transition">FLAT ₹999</span>
+        <span class="block text-[10px] text-gray-500 uppercase tracking-wider">Under ₹1000</span>
+      </a>
+      <a href="#products-section" class="border border-gold/50 bg-cream hover:bg-gold/10 p-4 text-center transition group">
+        <span class="block text-burgundy font-serif text-xl md:text-2xl mb-1 group-hover:scale-105 transition">FLAT ₹1499</span>
+        <span class="block text-[10px] text-gray-500 uppercase tracking-wider">Under ₹1500</span>
+      </a>
+      <a href="#products-section" class="border border-gold/50 bg-cream hover:bg-gold/10 p-4 text-center transition group">
+        <span class="block text-burgundy font-serif text-xl md:text-2xl mb-1 group-hover:scale-105 transition">FLAT ₹1999</span>
+        <span class="block text-[10px] text-gray-500 uppercase tracking-wider">Under ₹2000</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SHOP BY CATEGORY ================= -->
+<section class="py-16 bg-cream">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10">
+      <h2 class="font-serif text-2xl md:text-3xl text-burgundy mb-2 uppercase tracking-widest">Shop By Categories</h2>
+      <p class="text-gray-500 text-sm">Explore our wide range of premium collections.</p>
+    </div>
+    
+    <div class="flex overflow-x-auto hide-scroll md:grid md:grid-cols-4 gap-4 md:gap-6 pb-4 md:pb-0 px-2 md:px-0">
+      
+      <!-- Category 1 -->
+      <div class="flex-shrink-0 w-36 md:w-auto group cursor-pointer" onclick="filterByCategory('men')">
+        <div class="arch-card border border-gold/30 group-hover:border-gold transition duration-300 shadow-sm bg-white p-1">
+          <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=400&q=80" alt="Men's Wear" class="w-full h-48 md:h-64 object-cover rounded-t-[110px] rounded-b-sm img-zoom" />
+        </div>
+        <h3 class="text-center text-xs font-bold text-burgundy mt-4 group-hover:text-gold transition uppercase tracking-widest">Men's Wear</h3>
+      </div>
+
+      <!-- Category 2 -->
+      <div class="flex-shrink-0 w-36 md:w-auto group cursor-pointer" onclick="filterByCategory('women')">
+        <div class="arch-card border border-gold/30 group-hover:border-gold transition duration-300 shadow-sm bg-white p-1">
+          <img src="https://images.unsplash.com/photo-1583391733958-d25e07fac04f?w=400&q=80" alt="Women's Wear" class="w-full h-48 md:h-64 object-cover rounded-t-[110px] rounded-b-sm img-zoom" />
+        </div>
+        <h3 class="text-center text-xs font-bold text-burgundy mt-4 group-hover:text-gold transition uppercase tracking-widest">Women's Wear</h3>
+      </div>
+
+      <!-- Category 3 -->
+      <div class="flex-shrink-0 w-36 md:w-auto group cursor-pointer" onclick="filterByCategory('kids')">
+        <div class="arch-card border border-gold/30 group-hover:border-gold transition duration-300 shadow-sm bg-white p-1">
+          <img src="https://images.unsplash.com/photo-1519238263530-99abcbdc274d?w=400&q=80" alt="Kids' Wear" class="w-full h-48 md:h-64 object-cover rounded-t-[110px] rounded-b-sm img-zoom" />
+        </div>
+        <h3 class="text-center text-xs font-bold text-burgundy mt-4 group-hover:text-gold transition uppercase tracking-widest">Kids' Wear</h3>
+      </div>
+
+      <!-- Category 4 -->
+      <div class="flex-shrink-0 w-36 md:w-auto group cursor-pointer" onclick="filterByCategory('accessories')">
+        <div class="arch-card border border-gold/30 group-hover:border-gold transition duration-300 shadow-sm bg-white p-1">
+          <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?w=400&q=80" alt="Accessories" class="w-full h-48 md:h-64 object-cover rounded-t-[110px] rounded-b-sm img-zoom" />
+        </div>
+        <h3 class="text-center text-xs font-bold text-burgundy mt-4 group-hover:text-gold transition uppercase tracking-widest">Accessories</h3>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= FEATURED PRODUCTS ================= -->
+<section id="products-section" class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-10 border-b border-gray-100 pb-4">
+      <div>
+        <h2 class="font-serif text-2xl md:text-3xl text-burgundy uppercase tracking-widest">Best Sellers</h2>
+        <p class="text-[10px] text-gold mt-1 uppercase tracking-widest font-bold">Premium quality, everyday prices</p>
+      </div>
+      
+      <!-- Desktop Filters -->
+      <div class="flex space-x-3 mt-4 md:mt-0 text-sm">
+        <select id="category-select" onchange="applyFilters()" class="border border-gray-200 rounded-sm px-3 py-2 outline-none focus:border-gold bg-cream/50 text-gray-700 text-xs font-medium uppercase tracking-wider">
+          <option value="all">All Categories</option>
+          <option value="men">Men's Wear</option>
+          <option value="women">Women's Wear</option>
+          <option value="kids">Kids' Wear</option>
+        </select>
+        <select id="sort-select" onchange="applyFilters()" class="border border-gray-200 rounded-sm px-3 py-2 outline-none focus:border-gold bg-cream/50 text-gray-700 text-xs font-medium uppercase tracking-wider">
+          <option value="featured">Sort: Featured</option>
+          <option value="low">Price: Low to High</option>
+          <option value="high">Price: High to Low</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+      <!-- Products injected via JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ================= STORE INFO & CONTACT ================= -->
+<section id="contact" class="py-16 bg-cream">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-white rounded-sm shadow-xl overflow-hidden border border-gray-100 flex flex-col md:flex-row relative">
+      
+      <!-- Gold Accent line -->
+      <div class="absolute top-0 left-0 w-full h-1 bg-gold"></div>
+
+      <!-- Info -->
+      <div class="w-full md:w-1/2 p-8 md:p-12">
+        <h2 class="text-3xl font-serif text-burgundy mb-4">Visit Our Store</h2>
+        <p class="text-gray-600 mb-8 text-sm leading-relaxed">Experience our wide collection of premium readymade apparel and daily wear in person. Our friendly staff is ready to help you find the perfect fit for your family.</p>
+        
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="bg-cream p-3 rounded-full text-gold border border-gold/20"><i data-lucide="clock" class="w-5 h-5"></i></div>
+            <div>
+              <h4 class="font-bold text-gray-800 text-sm uppercase tracking-wider mb-1">Operating Hours</h4>
+              <p class="text-sm text-gray-600">Monday - Sunday: <br> 9:00 AM to 9:00 PM</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-4">
+            <div class="bg-cream p-3 rounded-full text-gold border border-gold/20"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
+            <div>
+              <h4 class="font-bold text-gray-800 text-sm uppercase tracking-wider mb-1">Location</h4>
+              <p class="text-sm text-gray-600 mb-2">Find us on Google Maps for directions.</p>
+              <a href="https://maps.app.goo.gl/CDvM5ktzZ7yAYE3e7?g_st=ac" target="_blank" class="text-xs font-bold text-burgundy hover:text-gold uppercase tracking-wider transition-colors underline decoration-1 underline-offset-4">Get Directions &rarr;</a>
+            </div>
+          </div>
+
+ 
